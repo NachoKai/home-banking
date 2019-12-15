@@ -223,7 +223,7 @@ function iniciarSesion() {
                             title: `Bienvenido ${nombreUsuario}`,
                             text: `Ya puedes comenzar a realizar operaciones.`,
                         })
-                    }, 100)
+                    }, 200)
                     saldoCuenta = 10000
                     actualizarSaldoEnPantalla()
                 } else if (value != codigoSeguridad) {
@@ -285,42 +285,4 @@ function actualizarSaldoEnPantalla() {
 
 function actualizarLimiteEnPantalla() {
     document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + limiteExtraccion
-}
-
-function validUser() {
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        onOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    })
-
-    Toast.fire({
-        icon: 'success',
-        title: 'Signed in successfully'
-    })
-}
-
-function invalidUser() {
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        onOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    })
-
-    Toast.fire({
-        icon: 'error',
-        title: 'Signed failed'
-    })
 }
