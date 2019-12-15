@@ -42,7 +42,6 @@ function cambiarLimiteDeExtraccion() {
 }
 
 function extraerDinero() {
-    let infoText = false
     let extraccion = prompt('Ingresa el monto que quieras extraer: ')
     if (esUnNumero(parseInt(extraccion))) {
         extraccion = parseInt(extraccion)
@@ -50,25 +49,22 @@ function extraerDinero() {
             return
         } else {
             if (extraccion > limiteExtraccion) {
-                infoText = 'El monto supera el limite de extraccion, intenta nuevamente.'
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: infoText,
+                    text: 'El monto supera el limite de extraccion, intenta nuevamente.',
                 })
             } else if (extraccion > saldoCuenta) {
-                infoText = 'No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero, intenta nuevamente.'
                 Swal.fire({
                     icon: 'warning',
                     title: 'Oops...',
-                    text: infoText,
+                    text: 'No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero, intenta nuevamente.',
                 })
             } else if (extraccion % 100 !== 0) {
-                infoText = 'El cajero solo entrega billetes de $100. Por favor ingrese un monto valido: '
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: infoText,
+                    text: 'El cajero solo entrega billetes de $100. Por favor ingrese un monto valido: ',
                 })
             } else {
                 let saldoAnterior = saldoCuenta
