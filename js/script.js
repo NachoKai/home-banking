@@ -15,7 +15,7 @@ window.onload = function () {
 function cambiarLimiteDeExtraccion() {
     (async () => {
         const {
-            value: limiteExtraccion
+            value: $limiteExtraccion
         } = await Swal.fire({
             title: `Ingresa el nuevo limite de extraccion:`,
             input: 'number',
@@ -27,9 +27,9 @@ function cambiarLimiteDeExtraccion() {
                     } else {
                         setTimeout(() => {
                             Swal.fire(`El nuevo limite de extraccion es de $${value}.`)
+                            limiteExtraccion = parseInt(value)
+                            actualizarLimiteEnPantalla()
                         }, 100)
-                        parseInt(value) = limiteExtraccion
-                        actualizarLimiteEnPantalla(limiteExtraccion)
                     }
                 } else if (extraccion == null) {
                     return
