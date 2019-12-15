@@ -119,10 +119,10 @@ function depositarDinero() {
 }
 
 function pagarServicio() {
-    let agua = 350
-    let telefono = 425
-    let luz = 210
-    let internet = 570
+    let agua = 3500
+    let telefono = 4250
+    let luz = 2100
+    let internet = 5700
     let servicioAPagar = prompt('Ingrese el numero que corresponda con el servicio que quieres pagar \n1- Agua \n2- Luz \n3- Internet \n4- Telefono')
     switch (servicioAPagar) {
         case '1':
@@ -214,9 +214,9 @@ function iniciarSesion() {
             inputValidator: (value) => {
                 if (value == codigoSeguridad) {
                     setTimeout(() => {
-                        saldoCuenta = 2000
+                        saldoCuenta = 10000
                         actualizarSaldoEnPantalla()
-                        limiteExtraccion = 500
+                        limiteExtraccion = 1000
                         actualizarLimiteEnPantalla()
                         Swal.fire({
                             icon: 'success',
@@ -224,7 +224,7 @@ function iniciarSesion() {
                             text: `Ya puedes comenzar a realizar operaciones.`,
                         })
                     }, 100)
-                    saldoCuenta = 2000
+                    saldoCuenta = 10000
                     actualizarSaldoEnPantalla()
                 } else if (value != codigoSeguridad) {
                     saldoCuenta = 0
