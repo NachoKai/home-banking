@@ -2,7 +2,7 @@
 
 ## [Live Demo](https://nachokai.github.io/home-banking/)  
 •HTML  
-•CSS (Scss, Grid, Flexbox, Responsive Design)  
+•CSS (Scss, Flexbox, Responsive Design)  
 •Javascript  
 •FontAwesome  
 •Google Fonts  
