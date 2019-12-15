@@ -2,6 +2,8 @@ let nombreUsuario = 'Juan Caiafa';
 let saldoCuenta = 0;
 let limiteExtraccion = 0;
 let codigoSeguridad = 1234;
+let cuentaAmiga1 = 12345;
+let cuentaAmiga2 = 56789;
 
 window.onload = function () {
     iniciarSesion();
@@ -146,7 +148,7 @@ function pagarServicio() {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'El codigo no corresponde a un servicio habilitado.',
+                text: 'El código no corresponde a un servicio habilitado.',
             })
             servicioAPagar = false;
             break;
@@ -156,9 +158,9 @@ function pagarServicio() {
         if (dineroDisponible) {
             restarDinero(servicioAPagar);
             Swal.fire({
-                icon: 'info',
-                title: 'Oops...',
-                text: `El servicio ha sido abonado con exito. Se debitaron de su cuenta $${servicioAPagar}`,
+                icon: 'success',
+                title: 'Listo!',
+                text: `El servicio ha sido abonado con exito. Se debitaron de tu cuenta $${servicioAPagar}.`,
             })
             actualizarSaldoEnPantalla();
         }
@@ -166,8 +168,6 @@ function pagarServicio() {
 }
 
 function transferirDinero() {
-    let cuentaAmiga1 = 1234567;
-    let cuentaAmiga2 = 7654321;
     let montoATransfeir = prompt('Ingrese el monto que desea transferir.');
     if (esUnNumero(parseInt(montoATransfeir))) {
         montoATransfeir = parseInt(montoATransfeir);
@@ -181,9 +181,17 @@ function transferirDinero() {
                         let saldoAnterior = saldoCuenta;
                         saldoCuenta = restarDinero(montoATransfeir);
                         actualizarSaldoEnPantalla();
-                        Swal.fire('Has realizado una transferencia por $' + montoATransfeir + '\nCuenta amiga numero: ' + cuentaATransferir + '\nSaldo Anterior: $' + saldoAnterior + '\nSaldo actual: $' + saldoCuenta);
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Listo!',
+                            text: `Has realizado una transferencia por $${montoATransfeir}. Cuenta Amiga Nº: ${cuentaATransferir}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`,
+                        })
                     } else {
-                        Swal.fire('El codigo que ingresaste no corresponde a ninguna Cuenta Amiga.');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'El codigo que ingresaste no corresponde a ninguna Cuenta Amiga.',
+                        })
                     }
                 }
 
