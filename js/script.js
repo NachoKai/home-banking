@@ -49,24 +49,44 @@ function extraerDinero() {
         } else {
             if (extraccion > limiteExtraccion) {
                 infoText = 'El monto supera el limite de extraccion, intenta nuevamente.';
-                Swal.fire(infoText);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: infoText,
+                })
             } else if (extraccion > saldoCuenta) {
                 infoText = 'No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero, intenta nuevamente.';
-                Swal.fire(infoText);
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: infoText,
+                })
             } else if (extraccion % 100 !== 0) {
                 infoText = 'El cajero solo entrega billetes de $100. Por favor ingrese un monto valido: ';
-                Swal.fire(infoText);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: infoText,
+                })
             } else {
                 let saldoAnterior = saldoCuenta;
                 saldoCuenta = restarDinero(extraccion);
                 actualizarSaldoEnPantalla();
-                Swal.fire('Has retirado: $' + extraccion + '\nSaldo Anterior: $' + saldoAnterior + '\nSaldo actual: $' + saldoCuenta);
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Extraccion exitosa:',
+                    text: `Has retirado: $${extraccion}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`
+                })
             }
         }
     } else if (extraccion == null) {
         return;
     } else {
-        Swal.fire('El valor ingresado no es valido');
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'El valor ingresado no es valido',
+        })
         return;
     }
 }
@@ -115,7 +135,11 @@ function pagarServicio() {
             servicioAPagar = false;
             break;
         default:
-            Swal.fire('El codigo no corresponde a un servicio habilitado.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'El codigo no corresponde a un servicio habilitado.',
+            })
             servicioAPagar = false;
             break;
     }
@@ -123,7 +147,11 @@ function pagarServicio() {
         let dineroDisponible = saldoSuficiente(servicioAPagar);
         if (dineroDisponible) {
             restarDinero(servicioAPagar);
-            Swal.fire('El servicio ha sido abonado con exito. Se debitaron de su cuenta $' + servicioAPagar);
+            Swal.fire({
+                icon: 'info',
+                title: 'Oops...',
+                text: `El servicio ha sido abonado con exito. Se debitaron de su cuenta $${servicioAPagar}`,
+            })
             actualizarSaldoEnPantalla();
         }
     }
@@ -166,13 +194,19 @@ function iniciarSesion() {
         const {
             value: codigoUsuario
         } = await Swal.fire({
-            title: `Ingrese el codigo de acceso para la cuenta de: ${nombreUsuario}`,
+            icon: 'question',
+            title: 'Contraseña:',
+            text: `Ingrese el codigo de acceso para la cuenta de: ${nombreUsuario}`,
             input: 'password',
             showCancelButton: true,
             inputValidator: (value) => {
                 if (value == codigoSeguridad) {
                     setTimeout(() => {
-                        Swal.fire(`Bienvenido ${nombreUsuario}. Ya puedes comenzar a realizar operaciones.`)
+                        Swal.fire({
+                            icon: 'success',
+                            title: `Bienvenido ${nombreUsuario}`,
+                            text: `Ya puedes comenzar a realizar operaciones.`,
+                        })
                     }, 100);
                     saldoCuenta = 2000;
                     actualizarSaldoEnPantalla();
@@ -229,4 +263,42 @@ function actualizarSaldoEnPantalla() {
 
 function actualizarLimiteEnPantalla() {
     document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + limiteExtraccion;
+}
+
+function validUser() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'success',
+        title: 'Signed in successfully'
+    })
+}
+
+function invalidUser() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: 'error',
+        title: 'Signed failed'
+    })
 }
