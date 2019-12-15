@@ -1,6 +1,6 @@
 let nombreUsuario = 'Juan Caiafa';
-let saldoCuenta = 2000;
-let limiteExtraccion = 300;
+let saldoCuenta = 0;
+let limiteExtraccion = 0;
 let codigoSeguridad = 1234;
 
 window.onload = function () {
@@ -102,12 +102,20 @@ function depositarDinero() {
             let saldoAnterior = saldoCuenta;
             saldoCuenta = sumarDinero(deposito);
             actualizarSaldoEnPantalla();
-            Swal.fire('Has depositado: $' + deposito + '\nSaldo Anterior: $' + saldoAnterior + '\nSaldo actual: $' + saldoCuenta);
+            Swal.fire({
+                icon: 'info',
+                title: 'Deposito exitoso:',
+                text: `Has depositado: $${deposito}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`
+            })
         }
     } else if (deposito == null) {
         return;
     } else {
-        Swal.fire('El valor ingresado no es valido');
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'El valor ingresado no es valido',
+        })
         return;
     }
 }
@@ -202,6 +210,10 @@ function iniciarSesion() {
             inputValidator: (value) => {
                 if (value == codigoSeguridad) {
                     setTimeout(() => {
+                        saldoCuenta = 2000;
+                        actualizarSaldoEnPantalla();
+                        limiteExtraccion = 500;
+                        actualizarLimiteEnPantalla()
                         Swal.fire({
                             icon: 'success',
                             title: `Bienvenido ${nombreUsuario}`,
@@ -213,6 +225,8 @@ function iniciarSesion() {
                 } else if (value != codigoSeguridad) {
                     saldoCuenta = 0;
                     actualizarSaldoEnPantalla();
+                    limiteExtraccion = 0;
+                    actualizarLimiteEnPantalla()
                     return 'El codigo ingresado es incorrecto. El dinero sera retenido por cuestiones de seguridad.'
                 }
             }
