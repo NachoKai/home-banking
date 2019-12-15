@@ -1,7 +1,13 @@
+$background-color: #2a333d;
+$primary-color: #2cc197;
+$white-color: #ffffff;
+$link-color: #666;
+$border-color: #979797;
+
 body {
     margin: 0;
     font-family: "Source Sans Pro", sans-serif;
-    background-color: #2a333d;
+    background-color: $background-color;
 }
 
 .avatar {
@@ -30,8 +36,8 @@ body {
     font-family: "Source Sans Pro";
     font-size: 32px;
     font-weight: normal;
-    color: #2a333d;
-    border-left: 6px solid #2cc197;
+    color: $background-color;
+    border-left: 6px solid $primary-color;
 }
 
 .header {
@@ -53,7 +59,7 @@ body {
     overflow: hidden;
     font-size: 14px;
     text-overflow: ellipsis;
-    color: #fff;
+    color: $white-color;
 }
 
 .links {
@@ -70,14 +76,14 @@ body {
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
     text-align: left;
-    color: #666;
+    color: $link-color;
     border: 0;
     background-color: transparent;
 }
 
 .links:hover {
     margin-left: 10px;
-    color: #2cc197;
+    color: $primary-color;
 }
 
 .white-container {
@@ -87,9 +93,9 @@ body {
     margin: 0 auto;
     box-sizing: border-box;
 
-    border: 1px solid #979797;
+    border: 1px solid $border-color;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: $white-color;
 
     justify-content: center;
 }
@@ -103,7 +109,7 @@ body {
 
     color: white;
     border-radius: 8px;
-    background-color: #2cc197;
+    background-color: $primary-color;
 
     align-items: center;
 }
