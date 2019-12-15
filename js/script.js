@@ -240,7 +240,11 @@ function iniciarSesion() {
 
 function saldoSuficiente(data) {
     if (data > saldoCuenta) {
-        Swal.fire('El saldo de la cuenta es insuficiente para realizar esta operacion.')
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'El saldo de la cuenta es insuficiente para realizar esta operacion.',
+        })
         return false
     }
     return true
