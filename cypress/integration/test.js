@@ -1,11 +1,16 @@
 const URL = 'http://127.0.0.1:8081';
 
 describe('My First Test', function () {
-    before(() => {
-        cy.visit(URL)
-    });
 
-    it('finds the content "OK" and click it', function () {
+    it('finds the content "OK" and click it and fail', function () {
+        cy.visit(URL)
+        cy.get('input').first().type('12345')
+        cy.contains('OK').click()
+        cy.get('#swal2-validation-message').contains('El código ingresado es incorrecto.')
+    })
+
+    it('finds the content "OK" and click it and success', function () {
+        cy.visit(URL)
         cy.get('input').first().type('1234')
         cy.contains('OK').click()
     })
