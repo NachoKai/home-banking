@@ -4,6 +4,10 @@ let limiteExtraccion = 0
 let codigoSeguridad = 1234
 let cuentaAmiga1 = 12345
 let cuentaAmiga2 = 56789
+let agua = 3500
+let telefono = 4250
+let luz = 2100
+let internet = 5700
 
 window.onload = function () {
     iniciarSesion()
