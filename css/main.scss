@@ -1,8 +1,19 @@
-$background-color: #2a333d;
-$primary-color: #2cc197;
+$background-color: #282f38;
+$primary-color: #852cc1;
 $white-color: #ffffff;
-$link-color: #666;
-$border-color: #979797;
+$link-color: #474747;
+$border-color: #909090;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     margin: 0;
@@ -92,11 +103,9 @@ body {
     padding: 30px;
     margin: 0 auto;
     box-sizing: border-box;
-
     border: 1px solid $border-color;
     border-radius: 8px;
     background-color: $white-color;
-
     justify-content: center;
 }
 
