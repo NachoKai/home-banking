@@ -17,7 +17,7 @@ function cambiarLimiteDeExtraccion() {
         const {
             value: $limiteExtraccion
         } = await Swal.fire({
-            title: `Ingresa el nuevo limite de extraccion:`,
+            title: `Ingresa el nuevo límite de extracción:`,
             input: 'number',
             showCancelButton: true,
             inputValidator: (value) => {
@@ -26,7 +26,7 @@ function cambiarLimiteDeExtraccion() {
                         return
                     } else {
                         setTimeout(() => {
-                            Swal.fire(`El nuevo limite de extraccion es de $${value}.`)
+                            Swal.fire(`El nuevo límite de extracción es de $${value}.`)
                             limiteExtraccion = parseInt(value)
                             actualizarLimiteEnPantalla()
                         }, 100)
@@ -34,7 +34,7 @@ function cambiarLimiteDeExtraccion() {
                 } else if (extraccion == null) {
                     return
                 } else {
-                    return 'El valor ingresado no es valido.'
+                    return 'El valor ingresado no es válido.'
                 }
             }
         })
@@ -52,7 +52,7 @@ function extraerDinero() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'El monto supera el limite de extraccion, intenta nuevamente.',
+                    text: 'El monto supera el límite de extracción, intenta nuevamente.',
                 })
             } else if (extraccion > saldoCuenta) {
                 Swal.fire({
@@ -64,7 +64,7 @@ function extraerDinero() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'El cajero solo entrega billetes de $100. Por favor ingrese un monto valido: ',
+                    text: 'El cajero sólo entrega billetes de $100. Por favor, ingresa un monto válido: ',
                 })
             } else {
                 let saldoAnterior = saldoCuenta
@@ -72,7 +72,7 @@ function extraerDinero() {
                 actualizarSaldoEnPantalla()
                 Swal.fire({
                     icon: 'info',
-                    title: 'Extraccion exitosa:',
+                    title: 'Extracción exitosa:',
                     text: `Has retirado: $${extraccion}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`
                 })
             }
@@ -83,7 +83,7 @@ function extraerDinero() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'El valor ingresado no es valido',
+            text: 'El valor ingresado no es válido.',
         })
         return
     }
@@ -102,7 +102,7 @@ function depositarDinero() {
             actualizarSaldoEnPantalla()
             Swal.fire({
                 icon: 'info',
-                title: 'Deposito exitoso:',
+                title: 'Depósito exitoso:',
                 text: `Has depositado: $${deposito}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`
             })
         }
@@ -112,7 +112,7 @@ function depositarDinero() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'El valor ingresado no es valido',
+            text: 'El valor ingresado no es válido.',
         })
         return
     }
@@ -123,7 +123,7 @@ function pagarServicio() {
     let telefono = 4250
     let luz = 2100
     let internet = 5700
-    let servicioAPagar = prompt('Ingrese el numero que corresponda con el servicio que quieres pagar \n1- Agua \n2- Luz \n3- Internet \n4- Telefono')
+    let servicioAPagar = prompt('Ingresa el número que corresponda al servicio que quieras pagar: \n1- Agua \n2- Luz \n3- Internet \n4- Telefono')
     switch (servicioAPagar) {
         case '1':
             servicioAPagar = agua
@@ -156,7 +156,7 @@ function pagarServicio() {
             Swal.fire({
                 icon: 'success',
                 title: 'Listo!',
-                text: `El servicio ha sido abonado con exito. Se debitaron de tu cuenta $${servicioAPagar}.`,
+                text: `El servicio ha sido abonado con éxito. Se debitaron de tu cuenta $${servicioAPagar}.`,
             })
             actualizarSaldoEnPantalla()
         }
@@ -164,14 +164,14 @@ function pagarServicio() {
 }
 
 function transferirDinero() {
-    let montoATransfeir = prompt('Ingrese el monto que desea transferir.')
+    let montoATransfeir = prompt('Ingrese el monto que desea transferir:')
     if (esUnNumero(parseInt(montoATransfeir))) {
         montoATransfeir = parseInt(montoATransfeir)
         if (esNegativo(montoATransfeir)) {
             return
         } else {
             if (saldoSuficiente(montoATransfeir)) {
-                let cuentaATransferir = parseInt(prompt('Ingrese el Numero de la cuenta a la que desea transferirle dinero.'))
+                let cuentaATransferir = parseInt(prompt('Ingresa el Número de la cuenta a la que deseas transferir dinero:'))
                 if (esUnNumero(cuentaATransferir)) {
                     if ((cuentaATransferir == cuentaAmiga1) || (cuentaATransferir == cuentaAmiga2)) {
                         let saldoAnterior = saldoCuenta
@@ -180,13 +180,13 @@ function transferirDinero() {
                         Swal.fire({
                             icon: 'success',
                             title: 'Listo!',
-                            text: `Has realizado una transferencia por $${montoATransfeir}. Cuenta Amiga Nº: ${cuentaATransferir}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`,
+                            text: `Has realizado una transferencia por $${montoATransfeir}. Cuenta Amiga Número: ${cuentaATransferir}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`,
                         })
                     } else {
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
-                            text: 'El codigo que ingresaste no corresponde a ninguna Cuenta Amiga.',
+                            text: 'El código que ingresaste no corresponde a ninguna Cuenta Amiga.',
                         })
                     }
                 }
@@ -196,7 +196,7 @@ function transferirDinero() {
     } else if (montoATransfeir == null) {
         return
     } else {
-        Swal.fire('El valor ingresado no es valido')
+        Swal.fire('El valor ingresado no es válido.')
         return
     }
 }
@@ -208,7 +208,7 @@ function iniciarSesion() {
         } = await Swal.fire({
             icon: 'question',
             title: 'Contraseña:',
-            text: `Ingrese el codigo de acceso para la cuenta de: ${nombreUsuario}`,
+            text: `Ingresa el código de acceso para la cuenta de: ${nombreUsuario}`,
             input: 'password',
             showCancelButton: true,
             inputValidator: (value) => {
@@ -220,7 +220,7 @@ function iniciarSesion() {
                         actualizarLimiteEnPantalla()
                         Swal.fire({
                             icon: 'success',
-                            title: `Bienvenido ${nombreUsuario}`,
+                            title: `Bienvenido/a ${nombreUsuario}`,
                             text: `Ya puedes comenzar a realizar operaciones.`,
                         })
                     }, 200)
@@ -231,7 +231,7 @@ function iniciarSesion() {
                     actualizarSaldoEnPantalla()
                     limiteExtraccion = 0
                     actualizarLimiteEnPantalla()
-                    return 'El codigo ingresado es incorrecto. El dinero sera retenido por cuestiones de seguridad.'
+                    return 'El código ingresado es incorrecto. El dinero será retenido por cuestiones de seguridad.'
                 }
             }
         })
@@ -243,7 +243,7 @@ function saldoSuficiente(data) {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'El saldo de la cuenta es insuficiente para realizar esta operacion.',
+            text: 'El saldo de la cuenta es insuficiente para realizar esta operación.',
         })
         return false
     }
@@ -259,7 +259,7 @@ function esUnNumero(data) {
 
 function esNegativo(data) {
     if (Math.sign(data) === -1) {
-        Swal.fire('El valor ingresado no es valido.')
+        Swal.fire('El valor ingresado no es válido.')
         return true
     }
     return false
@@ -284,5 +284,5 @@ function actualizarSaldoEnPantalla() {
 }
 
 function actualizarLimiteEnPantalla() {
-    document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + limiteExtraccion
+    document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es de: $" + limiteExtraccion
 }
