@@ -50,8 +50,6 @@ function cambiarLimiteDeExtraccion() {
 }
 
 function extraerDinero() {
-
-
     (async () => {
         const {
             value: $extraccion
@@ -124,32 +122,49 @@ function extraerDinero() {
 }
 
 function depositarDinero() {
-
-    let deposito = prompt('Ingresa el monto a depositar: ')
-    if (esUnNumero(parseInt(deposito))) {
-        deposito = parseInt(deposito)
-        if (esNegativo(deposito)) {
-            return
-        } else {
-            let saldoAnterior = saldoCuenta
-            saldoCuenta = sumarDinero(deposito)
-            actualizarSaldoEnPantalla()
-            Swal.fire({
-                icon: 'info',
-                title: 'Depósito exitoso:',
-                text: `Has depositado: $${deposito}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`
-            })
-        }
-    } else if (deposito == null) {
-        return
-    } else {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'El valor ingresado no es válido.',
+    (async () => {
+        const {
+            value: $deposito
+        } = await Swal.fire({
+            icon: 'info',
+            title: `Depositar dinero:`,
+            text: `Ingresa el monto a depositar:`,
+            input: 'number',
+            showCancelButton: true,
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            inputValidator: (value) => {
+                if (esUnNumero(parseInt(value))) {
+                    value = parseInt(value)
+                    if (esNegativo(value)) {
+                        return
+                    } else {
+                        let saldoAnterior = saldoCuenta
+                        saldoCuenta = sumarDinero(value)
+                        actualizarSaldoEnPantalla()
+                        setTimeout(() => {
+                            Swal.fire({
+                                icon: 'info',
+                                title: 'Depósito exitoso:',
+                                text: `Has depositado: $${value}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`
+                            })
+                        }, 200);
+                    }
+                } else if (value == null) {
+                    return
+                } else {
+                    setTimeout(() => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'El valor ingresado no es válido.',
+                        })
+                    }, 200);
+                    return
+                }
+            }
         })
-        return
-    }
+    })()
 }
 
 function pagarServicio() {
