@@ -267,7 +267,7 @@ function pagarServicio() {
             Swal.fire({
                 icon: 'success',
                 title: 'Listo!',
-                text: `El servicio ha sido abonado con éxito. Se debitaron de tu cuenta $${servicioAPagar}.`,
+                text: `El servicio ha sido abonado con éxito. Se debitaron $${servicioAPagar} de tu cuenta.`,
             })
             actualizarSaldoEnPantalla()
         }
@@ -291,7 +291,7 @@ function transferirDinero() {
                         Swal.fire({
                             icon: 'success',
                             title: 'Listo!',
-                            text: `Has realizado una transferencia por $${montoATransfeir}. Cuenta Amiga Número: ${cuentaATransferir}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`,
+                            text: `Has realizado una transferencia de $${montoATransfeir}. Cuenta Amiga Número: ${cuentaATransferir}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`,
                         })
                     } else {
                         Swal.fire({
