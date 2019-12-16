@@ -17,8 +17,12 @@ function cambiarLimiteDeExtraccion() {
         const {
             value: $limiteExtraccion
         } = await Swal.fire({
-            title: `Ingresa el nuevo límite de extracción:`,
+            icon: 'question',
+            title: `Cambiar límite de extracción`,
+            text: `Ingresa el nuevo límite de extracción:`,
             input: 'number',
+            allowEscapeKey: false,
+            allowOutsideClick: false,
             showCancelButton: true,
             inputValidator: (value) => {
                 if (esUnNumero(parseInt(value))) {
@@ -26,7 +30,11 @@ function cambiarLimiteDeExtraccion() {
                         return
                     } else {
                         setTimeout(() => {
-                            Swal.fire(`El nuevo límite de extracción es de $${value}.`)
+                            Swal.fire({
+                                icon: 'success',
+                                title: `Listo!`,
+                                text: `El nuevo límite de extracción es de $${value}.`
+                            })
                             limiteExtraccion = parseInt(value)
                             actualizarLimiteEnPantalla()
                         }, 100)
@@ -42,51 +50,77 @@ function cambiarLimiteDeExtraccion() {
 }
 
 function extraerDinero() {
-    let extraccion = prompt('Ingresa el monto que quieras extraer: ')
-    if (esUnNumero(parseInt(extraccion))) {
-        extraccion = parseInt(extraccion)
-        if (esNegativo(extraccion)) {
-            return
-        } else {
-            if (extraccion > limiteExtraccion) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'El monto supera el límite de extracción, intenta nuevamente.',
-                })
-            } else if (extraccion > saldoCuenta) {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Oops...',
-                    text: 'No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero, intenta nuevamente.',
-                })
-            } else if (extraccion % 100 !== 0) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'El cajero sólo entrega billetes de $100. Por favor, ingresa un monto válido: ',
-                })
-            } else {
-                let saldoAnterior = saldoCuenta
-                saldoCuenta = restarDinero(extraccion)
-                actualizarSaldoEnPantalla()
-                Swal.fire({
-                    icon: 'info',
-                    title: 'Extracción exitosa:',
-                    text: `Has retirado: $${extraccion}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`
-                })
+
+
+    (async () => {
+        const {
+            value: $extraccion
+        } = await Swal.fire({
+            icon: 'info',
+            title: `Extraer dinero:`,
+            text: `Ingresa el monto que quieras extraer:`,
+            input: 'number',
+            showCancelButton: true,
+            allowEscapeKey: false,
+            allowOutsideClick: false,
+            inputValidator: (value) => {
+                if (esUnNumero(parseInt(value))) {
+                    value = parseInt(value)
+                    if (esNegativo(value)) {
+                        return
+                    } else {
+                        if (value > limiteExtraccion) {
+                            setTimeout(() => {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'El monto supera el límite de extracción, intenta nuevamente.',
+                                })
+                            }, 200);
+                        } else if (value > saldoCuenta) {
+                            setTimeout(() => {
+                                Swal.fire({
+                                    icon: 'warning',
+                                    title: 'Oops...',
+                                    text: 'No hay saldo disponible en tu cuenta para extraer esa cantidad de dinero, intenta nuevamente.',
+                                })
+                            }, 200);
+                        } else if (value % 100 !== 0) {
+                            setTimeout(() => {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'El cajero sólo entrega billetes de $100. Por favor, ingresa un monto válido: ',
+                                })
+                            }, 200);
+                        } else {
+                            let saldoAnterior = saldoCuenta
+                            saldoCuenta = restarDinero(value)
+                            actualizarSaldoEnPantalla()
+                            setTimeout(() => {
+                                Swal.fire({
+                                    icon: 'info',
+                                    title: 'Extracción exitosa:',
+                                    text: `Has retirado: $${value}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`
+                                })
+                            }, 200);
+                        }
+                    }
+                } else if (value == null) {
+                    return
+                } else {
+                    setTimeout(() => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'El valor ingresado no es válido.',
+                        })
+                    }, 200);
+                    return
+                }
             }
-        }
-    } else if (extraccion == null) {
-        return
-    } else {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'El valor ingresado no es válido.',
         })
-        return
-    }
+    })()
 }
 
 function depositarDinero() {
@@ -211,6 +245,8 @@ function iniciarSesion() {
             text: `Ingresa el código de acceso para la cuenta de: ${nombreUsuario}`,
             input: 'password',
             showCancelButton: true,
+            allowEscapeKey: false,
+            allowOutsideClick: false,
             inputValidator: (value) => {
                 if (value == codigoSeguridad) {
                     setTimeout(() => {
