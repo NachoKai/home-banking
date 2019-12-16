@@ -4,7 +4,9 @@
   "description": "•HTML  \r •CSS (Scss, Flexbox, Responsive Design)  \r •Javascript  \r •FontAwesome  \r •Google Fonts  \r •SweetAlert2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress-run": "cypress run",
+    "cypress-open": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/NachoKai/home-banking/issues"
   },
-  "homepage": "https://github.com/NachoKai/home-banking#readme"
+  "homepage": "https://github.com/NachoKai/home-banking#readme",
+  "devDependencies": {
+    "cypress": "^3.8.0"
+  },
+  "dependencies": {
+    "http-server": "^0.12.0"
+  }
 }
