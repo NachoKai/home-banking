@@ -51,8 +51,6 @@ body {
   max-width: 800px;
   padding: 30px;
   margin: 0 auto;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   border: 1px solid #909090;
   border-radius: 8px;
   background-color: #ffffff;
@@ -114,13 +112,11 @@ body {
   color: #852cc1;
 }
 
-.green-container {
+.violet-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 80%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   text-align: center;
   color: white;
   border-radius: 8px;
@@ -156,7 +152,7 @@ body {
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
   }
-  .green-container {
+  .violet-container {
     width: 100%;
     margin-bottom: 20px;
   }
