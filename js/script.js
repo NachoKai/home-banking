@@ -172,6 +172,68 @@ function depositarDinero() {
 }
 
 function pagarServicio() {
+    /* 
+    function pagarServicio() {
+        (async () => {
+            const {
+                value: servicioAPagar
+            } = await Swal.fire({
+                title: 'Pagar servicios:',
+                input: 'select',
+                inputOptions: {
+                    agua: 'Agua',
+                    telefono: 'Teléfono',
+                    luz: 'Luz',
+                    internet: 'Internet'
+                },
+                inputPlaceholder: 'Selecciona el servicio a pagar:',
+                showCancelButton: true,
+                inputValidator: (value) => {
+                    return new Promise((resolve) => {
+                        switch (value) {
+                            case 'Agua':
+                                value = agua
+                                break
+                            case 'Teléfono':
+                                value = telefono
+                                break
+                            case 'Luz':
+                                value = luz
+                                break
+                            case 'Internet':
+                                value = internet
+                                break
+                            case null:
+                                value = false
+                                break
+                            default:
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'El código no corresponde a un servicio habilitado.',
+                                })
+                                value = false
+                                break
+                        }
+                        if (value) {
+                            let dineroDisponible = saldoSuficiente(value)
+                            if (dineroDisponible) {
+                                restarDinero(value)
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Listo!',
+                                    text: `El servicio ha sido abonado con éxito. Se debitaron de tu cuenta $${value}.`,
+                                })
+                                actualizarSaldoEnPantalla()
+                            }
+                        }
+                    })
+                }
+            })
+        })
+    }
+    */
+
     let agua = 3500
     let telefono = 4250
     let luz = 2100
