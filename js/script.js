@@ -321,7 +321,6 @@ function iniciarSesion() {
             title: 'Contraseña:',
             text: `Ingresa el código de acceso para la cuenta de: ${nombreUsuario}`,
             input: 'password',
-            showCancelButton: true,
             allowEscapeKey: false,
             allowOutsideClick: false,
             inputValidator: (value) => {
