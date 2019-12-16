@@ -13,5 +13,6 @@ describe('My First Test', function () {
         cy.visit(URL)
         cy.get('input').first().type('1234')
         cy.contains('OK').click()
+        cy.get('#saldo-cuenta').contains('$10000')
     })
 })
