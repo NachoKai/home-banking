@@ -112,7 +112,7 @@ body {
   color: #852cc1;
 }
 
-.violet-container {
+.pesos-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -152,7 +152,7 @@ body {
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
   }
-  .violet-container {
+  .pesos-container {
     width: 100%;
     margin-bottom: 20px;
   }
