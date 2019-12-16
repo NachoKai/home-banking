@@ -101,7 +101,7 @@ function extraerDinero() {
                             actualizarSaldoEnPantalla()
                             setTimeout(() => {
                                 Swal.fire({
-                                    icon: 'info',
+                                    icon: 'success',
                                     title: 'Extracción exitosa:',
                                     text: `Has retirado: $${value}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`
                                 })
@@ -148,7 +148,7 @@ function depositarDinero() {
                         actualizarSaldoEnPantalla()
                         setTimeout(() => {
                             Swal.fire({
-                                icon: 'info',
+                                icon: 'success',
                                 title: 'Depósito exitoso:',
                                 text: `Has depositado: $${value}. Saldo Anterior: $${saldoAnterior}. Saldo actual: $${saldoCuenta}.`
                             })
