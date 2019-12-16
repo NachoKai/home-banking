@@ -21,23 +21,38 @@ body {
     background-color: $background-color;
 }
 
-.avatar {
-    display: inline-block;
-    vertical-align: text-bottom;
-}
-
-.logo {
-    display: inline-block;
-    width: 200px;
-    height: 50px;
-    text-align: left;
-    vertical-align: text-bottom;
+.header {
+    display: flex;
+    width: 80%;
+    max-width: 800px;
+    margin: 7% auto 0;
+    margin-bottom: 15px;
+    justify-content: space-between;
 }
 
 .align-left {
     display: flex;
     padding: 8px;
     align-items: center;
+}
+
+.white-container {
+    display: flex;
+    width: 80%;
+    max-width: 800px;
+    padding: 30px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    background-color: $white-color;
+    justify-content: center;
+}
+
+.menu-container {
+    display: block;
+    width: 35%;
+    padding-right: 20px;
 }
 
 .tu-cuenta {
@@ -49,14 +64,6 @@ body {
     font-weight: normal;
     color: $background-color;
     border-left: 6px solid $primary-color;
-}
-
-.header {
-    display: flex;
-    width: 65%;
-    margin: 7% auto 0;
-    margin-bottom: 15px;
-    justify-content: space-between;
 }
 
 .cuenta-info {
@@ -97,21 +104,9 @@ body {
     color: $primary-color;
 }
 
-.white-container {
-    display: flex;
-    width: 65%;
-    padding: 30px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    border: 1px solid $border-color;
-    border-radius: 8px;
-    background-color: $white-color;
-    justify-content: center;
-}
-
 .green-container {
     display: flex;
-    width: 65%;
+    width: 80%;
     box-sizing: border-box;
 
     text-align: center;
@@ -123,12 +118,6 @@ body {
     align-items: center;
 }
 
-.menu-container {
-    display: block;
-    width: 35%;
-    padding-right: 20px;
-}
-
 .cuenta-container {
     width: 35%;
 }
@@ -137,18 +126,14 @@ body {
     margin-top: 5%;
     margin-bottom: 5%;
     overflow: hidden;
-
     font-size: 6.5vw;
-
     text-align: center;
     text-overflow: ellipsis;
 }
 
 #limite-extraccion {
     overflow: hidden;
-
     font-size: 15px;
-
     text-overflow: ellipsis;
 }
 

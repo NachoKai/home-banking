@@ -12,21 +12,35 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   background-color: #282f38;
 }
-.avatar {
-  display: inline-block;
-  vertical-align: text-bottom;
-}
-.logo {
-  display: inline-block;
-  width: 200px;
-  height: 50px;
-  text-align: left;
-  vertical-align: text-bottom;
+.header {
+  display: flex;
+  width: 80%;
+  max-width: 800px;
+  margin: 7% auto 0;
+  margin-bottom: 15px;
+  justify-content: space-between;
 }
 .align-left {
   display: flex;
   padding: 8px;
   align-items: center;
+}
+.white-container {
+  display: flex;
+  width: 80%;
+  max-width: 800px;
+  padding: 30px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 1px solid #909090;
+  border-radius: 8px;
+  background-color: #fff;
+  justify-content: center;
+}
+.menu-container {
+  display: block;
+  width: 35%;
+  padding-right: 20px;
 }
 .tu-cuenta {
   padding-left: 24px;
@@ -37,13 +51,6 @@ body {
   font-weight: normal;
   color: #282f38;
   border-left: 6px solid #852cc1;
-}
-.header {
-  display: flex;
-  width: 65%;
-  margin: 7% auto 0;
-  margin-bottom: 15px;
-  justify-content: space-between;
 }
 .cuenta-info {
   display: block;
@@ -79,31 +86,15 @@ body {
   margin-left: 10px;
   color: #852cc1;
 }
-.white-container {
-  display: flex;
-  width: 65%;
-  padding: 30px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  border: 1px solid #909090;
-  border-radius: 8px;
-  background-color: #fff;
-  justify-content: center;
-}
 .green-container {
   display: flex;
-  width: 65%;
+  width: 80%;
   box-sizing: border-box;
   text-align: center;
   color: white;
   border-radius: 8px;
   background-color: #852cc1;
   align-items: center;
-}
-.menu-container {
-  display: block;
-  width: 35%;
-  padding-right: 20px;
 }
 .cuenta-container {
   width: 35%;
