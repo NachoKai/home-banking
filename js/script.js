@@ -234,10 +234,6 @@ function pagarServicio() {
     }
     */
 
-    let agua = 3500
-    let telefono = 4250
-    let luz = 2100
-    let internet = 5700
     let servicioAPagar = prompt('Ingresa el número que corresponda al servicio que quieras pagar: \n1- Agua \n2- Luz \n3- Internet \n4- Telefono')
     switch (servicioAPagar) {
         case '1':
