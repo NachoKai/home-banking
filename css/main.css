@@ -18,6 +18,7 @@ body {
   margin: 0;
   font-family: "Source Sans Pro", sans-serif;
   background-color: #282f38;
+  min-height: calc(100vh - 20px);
 }
 
 .header {
@@ -143,6 +144,27 @@ body {
   overflow: hidden;
   font-size: 15px;
   text-overflow: ellipsis;
+}
+
+footer {
+  color: #fff;
+  height: 20px;
+  width: 80%;
+  max-width: 800px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 12px;
+  margin: 0% auto 0;
+  margin-top: 10px;
+}
+
+footer a {
+  text-decoration: none;
+  color: #fff;
 }
 
 @media only screen and (max-width: 800px) {
