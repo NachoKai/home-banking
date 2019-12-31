@@ -23,25 +23,25 @@ describe('Home-Banking Test', function () {
         cy.get('.links').contains('Extraer dinero').click()
         cy.get('input').first().type('500')
         cy.get('[class^=swal2-confirm]').click({
-            multiple: true
+            force: true
         })
     })
 
     it('deposits $500', function () {
         cy.wait(100)
         cy.get('[class^=swal2-confirm]').click({
-            multiple: true
+            force: true
         })
         cy.get('#saldo-cuenta').contains('$9500')
         cy.get('.white-container').first()
         cy.get('.links').contains('Depositar dinero').click()
         cy.get('input').first().type('500')
         cy.get('[class^=swal2-confirm]').click({
-            multiple: true
+            force: true
         })
         cy.wait(100)
         cy.get('[class^=swal2-confirm]').click({
-            multiple: true
+            force: true
         })
     })
 
@@ -51,7 +51,7 @@ describe('Home-Banking Test', function () {
         cy.get('.white-container').first()
         cy.get('.links').contains('Pagar servicios').click()
         cy.get('[class^=swal2-confirm]').click({
-            multiple: true
+            force: true
         })
     })
 
@@ -61,7 +61,7 @@ describe('Home-Banking Test', function () {
         cy.get('.white-container').first()
         cy.get('.links').contains('Pagar servicios').click()
         cy.get('[class^=swal2-confirm]').click({
-            multiple: true
+            force: true
         })
     })
 
@@ -71,7 +71,7 @@ describe('Home-Banking Test', function () {
         cy.get('.white-container').first()
         cy.get('.links').contains('Pagar servicios').click()
         cy.get('[class^=swal2-confirm]').click({
-            multiple: true
+            force: true
         })
     })
 
@@ -82,7 +82,7 @@ describe('Home-Banking Test', function () {
         cy.get('.links').contains('Pagar servicios').click()
         cy.get('#swal2-content').contains('El saldo de la cuenta es insuficiente para realizar esta operación.')
         cy.get('[class^=swal2-confirm]').click({
-            multiple: true
+            force: true
         })
     })
 
@@ -93,7 +93,7 @@ describe('Home-Banking Test', function () {
         cy.get('.links').contains('Pagar servicios').click()
         cy.get('#swal2-content').contains('El código no corresponde a un servicio habilitado.')
         cy.get('[class^=swal2-confirm]').click({
-            multiple: true
+            force: true
         })
     })
 })
