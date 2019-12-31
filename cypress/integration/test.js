@@ -14,7 +14,7 @@ describe('Home-Banking Test', function () {
         cy.get('input').first().type('1234')
         cy.contains('OK').click()
         cy.wait(100)
-        cy.get('[class^=swal2-actions]').click({
+        cy.get('[class^=swal2-confirm]').click({
             multiple: true
         })
     })
@@ -84,6 +84,17 @@ describe('Home-Banking Test', function () {
         cy.get('.white-container').first()
         cy.get('.links').contains('Pagar servicios').click()
         cy.get('#swal2-content').contains('El saldo de la cuenta es insuficiente para realizar esta operación.')
+        cy.get('[class^=swal2-confirm]').click({
+            multiple: true
+        })
+    })
+
+    it('pay for non-existent service', function () {
+        cy.wait(100)
+        cy.get('#saldo-cuenta').contains('$150')
+        cy.get('.white-container').first()
+        cy.get('.links').contains('Pagar servicios').click()
+        cy.get('#swal2-content').contains('El código no corresponde a un servicio habilitado.')
         cy.get('[class^=swal2-confirm]').click({
             multiple: true
         })
