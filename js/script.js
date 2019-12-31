@@ -273,6 +273,8 @@ function iniciarSesion() {
                             title: `Bienvenido/a ${nombreUsuario}`,
                             text: `Ya puedes comenzar a realizar operaciones.`,
                             showConfirmButton: false,
+                            allowEscapeKey: true,
+                            allowOutsideClick: true,
                             timer: 2000
                         })
                     }, 200)
