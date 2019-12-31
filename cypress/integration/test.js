@@ -13,10 +13,7 @@ describe('Home-Banking Test', function () {
         cy.visit(URL)
         cy.get('input').first().type('1234')
         cy.contains('OK').click()
-        cy.wait(100)
-        cy.get('[class^=swal2-confirm]').click({
-            multiple: true
-        })
+        cy.wait(2000)
     })
 
     it('extracts $500', function () {

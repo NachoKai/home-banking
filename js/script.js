@@ -272,6 +272,8 @@ function iniciarSesion() {
                             icon: 'success',
                             title: `Bienvenido/a ${nombreUsuario}`,
                             text: `Ya puedes comenzar a realizar operaciones.`,
+                            showConfirmButton: false,
+                            timer: 2000
                         })
                     }, 200)
                     saldoCuenta = 10000
