@@ -340,3 +340,5 @@ function actualizarSaldoEnPantalla() {
 function actualizarLimiteEnPantalla() {
     document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es de: $" + limiteExtraccion
 }
+
+document.getElementById("current-year").innerHTML = new Date().getFullYear();
