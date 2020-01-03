@@ -126,7 +126,6 @@ describe('Home-Banking Test', function () {
     })
 
     it('pay for non-existent service', function () {
-
         cy.visit(URL, {
             onBeforeLoad(win) {
                 cy.stub(win, 'prompt').returns('5')
@@ -148,4 +147,23 @@ describe('Home-Banking Test', function () {
         })
         cy.wait(100)
     })
+
+    // it('transfer money to friend 1', function () {
+    //     cy.visit(URL, {
+    //         onBeforeLoad(win) {
+    //             cy.stub(win, 'prompt').returns('500')
+    //         }
+    //     })
+    //     cy.get('input').first().type('1234')
+    //     cy.contains('OK').click()
+
+    //     cy.get('#saldo-cuenta').contains('$10000')
+    //     cy.get('.white-container').first()
+    //     cy.get('.links').contains('Transferir dinero').click()
+    //     cy.window().its('prompt').should('be.called')
+    //     cy.wait(100)
+    //     cy.get('[class^=swal2-actions]').click({
+    //         force: true
+    //     })
+    // })
 })
