@@ -1,13 +1,13 @@
-let nombreUsuario = 'Juan Caiafa'
-let saldoCuenta = 0
-let limiteExtraccion = 0
-let codigoSeguridad = 1234
-let cuentaAmiga1 = 12345
-let cuentaAmiga2 = 56789
-let agua = 3500
-let telefono = 4250
-let luz = 2100
-let internet = 5700
+let nombreUsuario = 'Juan Caiafa',
+    saldoCuenta = 0,
+    limiteExtraccion = 0,
+    codigoSeguridad = 1234,
+    cuentaAmiga1 = 12345,
+    cuentaAmiga2 = 56789,
+    agua = 3500,
+    telefono = 4250,
+    luz = 2100,
+    internet = 5700
 
 window.onload = function () {
     iniciarSesion()
@@ -329,16 +329,8 @@ function sumarDinero(data) {
     return saldoCuenta
 }
 
-function cargarNombreEnPantalla() {
-    document.getElementById("nombre").innerHTML = "Bienvenido/a " + nombreUsuario
-}
-
-function actualizarSaldoEnPantalla() {
-    document.getElementById("saldo-cuenta").innerHTML = "$" + saldoCuenta
-}
-
-function actualizarLimiteEnPantalla() {
-    document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es de: $" + limiteExtraccion
-}
+cargarNombreEnPantalla = () => document.getElementById("nombre").innerHTML = "Bienvenido/a " + nombreUsuario
+actualizarSaldoEnPantalla = () => document.getElementById("saldo-cuenta").innerHTML = "$" + saldoCuenta
+actualizarLimiteEnPantalla = () => document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es de: $" + limiteExtraccion
 
 document.getElementById("current-year").innerHTML = new Date().getFullYear();
