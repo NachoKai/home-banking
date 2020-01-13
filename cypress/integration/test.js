@@ -1,7 +1,7 @@
+/// <reference types="Cypress" />
 const URL = 'https://nachokai.github.io/home-banking/';
 
 describe('Home-Banking Test', function () {
-
     it('finds the content "OK" and click it and fail', function () {
         cy.visit(URL)
         cy.get('input').first().type('12345')
@@ -13,10 +13,16 @@ describe('Home-Banking Test', function () {
         cy.visit(URL)
         cy.get('input').first().type('1234')
         cy.contains('OK').click()
+        cy.clock();
+        cy.tick(2000);
+        cy.clock();
+        cy.tick(100);
         cy.wait(2000)
     })
 
     it('extracts $500', function () {
+        cy.clock();
+        cy.tick(100);
         cy.wait(100)
         cy.get('#saldo-cuenta').contains('$10000')
         cy.get('.white-container').first()
@@ -28,6 +34,8 @@ describe('Home-Banking Test', function () {
     })
 
     it('deposits $500', function () {
+        cy.clock();
+        cy.tick(100);
         cy.wait(100)
         cy.get('[class^=swal2-confirm]').click({
             force: true
@@ -39,6 +47,8 @@ describe('Home-Banking Test', function () {
         cy.get('[class^=swal2-confirm]').click({
             force: true
         })
+        cy.clock();
+        cy.tick(100);
         cy.wait(100)
         cy.get('[class^=swal2-confirm]').click({
             force: true
@@ -53,12 +63,16 @@ describe('Home-Banking Test', function () {
         })
         cy.get('input').first().type('1234')
         cy.contains('OK').click()
+        cy.clock();
+        cy.tick(2000);
         cy.wait(2000)
         cy.get('#saldo-cuenta').contains('$10000')
         cy.get('.white-container').first()
         cy.get('.links').contains('Pagar servicios').click()
         cy.window().its('prompt').should('be.called')
         cy.get('#saldo-cuenta').contains('$6500')
+        cy.clock();
+        cy.tick(100);
         cy.wait(100)
         cy.get('[class^=swal2-actions]').click({
             force: true
@@ -73,12 +87,16 @@ describe('Home-Banking Test', function () {
         })
         cy.get('input').first().type('1234')
         cy.contains('OK').click()
+        cy.clock();
+        cy.tick(2000);
         cy.wait(2000)
         cy.get('#saldo-cuenta').contains('$10000')
         cy.get('.white-container').first()
         cy.get('.links').contains('Pagar servicios').click()
         cy.window().its('prompt').should('be.called')
         cy.get('#saldo-cuenta').contains('$5750')
+        cy.clock();
+        cy.tick(100);
         cy.wait(100)
         cy.get('[class^=swal2-actions]').click({
             force: true
@@ -93,12 +111,16 @@ describe('Home-Banking Test', function () {
         })
         cy.get('input').first().type('1234')
         cy.contains('OK').click()
+        cy.clock();
+        cy.tick(2000);
         cy.wait(2000)
         cy.get('#saldo-cuenta').contains('$10000')
         cy.get('.white-container').first()
         cy.get('.links').contains('Pagar servicios').click()
         cy.window().its('prompt').should('be.called')
         cy.get('#saldo-cuenta').contains('$7900')
+        cy.clock();
+        cy.tick(100);
         cy.wait(100)
         cy.get('[class^=swal2-actions]').click({
             force: true
@@ -113,12 +135,16 @@ describe('Home-Banking Test', function () {
         })
         cy.get('input').first().type('1234')
         cy.contains('OK').click()
+        cy.clock();
+        cy.tick(2000);
         cy.wait(2000)
         cy.get('#saldo-cuenta').contains('$10000')
         cy.get('.white-container').first()
         cy.get('.links').contains('Pagar servicios').click()
         cy.window().its('prompt').should('be.called')
         cy.get('#saldo-cuenta').contains('$4300')
+        cy.clock();
+        cy.tick(100);
         cy.wait(100)
         cy.get('[class^=swal2-actions]').click({
             force: true
@@ -133,11 +159,15 @@ describe('Home-Banking Test', function () {
         })
         cy.get('input').first().type('1234')
         cy.contains('OK').click()
+        cy.clock();
+        cy.tick(2000);
         cy.wait(2000)
         cy.get('#saldo-cuenta').contains('$10000')
         cy.get('.white-container').first()
         cy.get('.links').contains('Pagar servicios').click()
         cy.window().its('prompt').should('be.called')
+        cy.clock();
+        cy.tick(100);
         cy.wait(100)
         cy.get('#saldo-cuenta').contains('$10000')
         cy.get('.white-container').first()
@@ -145,6 +175,8 @@ describe('Home-Banking Test', function () {
         cy.get('[class^=swal2-actions]').click({
             force: true
         })
+        cy.clock();
+        cy.tick(100);
         cy.wait(100)
     })
 
