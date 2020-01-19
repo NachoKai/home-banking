@@ -43,7 +43,7 @@ function cambiarLimiteDeExtraccion() {
                             actualizarLimiteEnPantalla()
                         }, 100)
                     }
-                } else if (extraccion == null || undefined) {
+                } else if (extraccion == null || undefined || '') {
                     return
                 } else {
                     return 'El valor ingresado no es válido.'
