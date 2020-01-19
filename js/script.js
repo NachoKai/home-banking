@@ -25,8 +25,8 @@ function cambiarLimiteDeExtraccion() {
             title: `Cambiar límite de extracción`,
             text: `Ingresa el nuevo límite de extracción:`,
             input: 'number',
-            allowEscapeKey: false,
-            allowOutsideClick: false,
+            allowEscapeKey: true,
+            allowOutsideClick: true,
             showCancelButton: true,
             inputValidator: (value) => {
                 if (esUnNumero(parseInt(value))) {
