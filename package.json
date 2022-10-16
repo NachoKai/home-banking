@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/NachoKai/home-banking#readme",
   "devDependencies": {
-    "cypress": "^3.8.0"
+    "cypress": "^10.10.0"
   },
   "dependencies": {
     "http-server": "^0.12.0"
